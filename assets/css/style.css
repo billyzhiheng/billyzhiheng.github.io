@@ -855,3 +855,45 @@ footer .column {
   font-size: 1.25rem;
   line-height: 29px;
 }
+
+
+/* 确保导航栏项和下拉菜单的样式正确 */
+.navbar-item.has-dropdown {
+  position: relative;
+}
+
+.navbar-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -15%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar-item.has-dropdown:hover .navbar-dropdown {
+  display: block;
+}
+
+.navbar-dropdown a.navbar-item {
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.navbar-dropdown a.navbar-item:hover {
+  /* background-color: #f5f5f5; */
+  cursor: pointer;
+  color: #5d42bd;
+  font-weight: 600;
+  margin: 10px auto;
+  padding: 10px auto;
+  transition: 0.4s ease-out;
+  /* background-color: #7983ff; */
+  /* box-shadow: 0 4px #02080f; */
+  top: 2px;
+  border: radius 10px;
+}
