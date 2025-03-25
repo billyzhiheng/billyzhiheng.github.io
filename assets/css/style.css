@@ -1056,3 +1056,17 @@ footer .column {
   font-size: 20px;
   color: #d7d7d7;
 }
+#project_intro_yunli {
+  position: relative;
+  align-content: center;
+  text-align: center;
+  z-index: 3;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: white;
+  height: 50px;
+  width: 100%;
+  left: 0px;
+  background-color: rgb(0, 0, 0);
+  opacity: 0.5;
+}
