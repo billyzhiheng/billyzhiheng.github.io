@@ -1070,3 +1070,11 @@ footer .column {
   background-color: rgb(0, 0, 0);
   opacity: 0.5;
 }
+
+.yunli_contact_1{
+  background-color: transparent;
+  font-size: 20px;
+  color: black;
+  text-align: left;
+  margin-left: 27%;
+}
