@@ -126,7 +126,7 @@
       <button id="nextButton" style="position:absolute; right:-5px; top:265px;" title="Previous"> <img
           src="../cycle_images/button/right_button.svg" width="30px;"> </button>
       <div id="project_title_yunli">
-        <p id="project_intro">Production logistics dilemma</p>
+        <p id="project_intro_yunli">Production logistics dilemma</p>
       </div>
     </div>
     <!-- 底部dot -->
@@ -150,7 +150,6 @@
     <script type="text/javascript">
       const images = ["../images/Yunli/dilema.png", "../images/Yunli/challenge1.png", "../images/Yunli/challenge2.png", "../images/Yunli/challenge3.png", "../images/Yunli/system design.png"];
       const project_text = ["Production logistics dilemma", "Challenges in production logistics 1", "Challenges in production logistics 2", "Challenges in production logistics 3", "System Design Overview"];
-      const pic_url = ["https://ipic2025.pi.events/", "", "", ""];
       let currentIndex = 0;
       document.getElementById("prevButton").addEventListener("click", function () {
         currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环切换到前一张
@@ -163,8 +162,7 @@
       });
       function changeImage() {
         document.getElementById("slideshow_yunli").src = images[currentIndex];
-        document.getElementById("cycle_img_url").href = pic_url[currentIndex];
-        document.getElementById("project_intro").textContent = project_text[currentIndex];
+        document.getElementById("project_intro_yunli").textContent = project_text[currentIndex];
         clearInterval(update_slot);
         update_slot = setInterval(updateImage, 5000);
         updatedot();
@@ -172,8 +170,7 @@
       function updateImage() {
         currentIndex = (currentIndex + 1) % images.length; // 循环切换
         document.getElementById("slideshow_yunli").src = images[currentIndex];
-        document.getElementById("cycle_img_url").href = pic_url[currentIndex];
-        document.getElementById("project_intro").textContent = project_text[currentIndex];
+        document.getElementById("project_intro_yunli").textContent = project_text[currentIndex];
         updatedot();
       }
       function updatedot() {
@@ -332,7 +329,6 @@
   document.addEventListener("DOMContentLoaded", () => {
     const burger = document.querySelector(".navbar-burger");
     const menu = document.querySelector(".navbar-menu");
-
     burger.addEventListener("click", () => {
       burger.classList.toggle("is-active");
       menu.classList.toggle("is-active");
