@@ -83,7 +83,9 @@
             </a>
             <div class="navbar-dropdown">
               <a class="item-nav navbar-item" href="./assets/html/Long-Term Openings.html">Long-Term Openings</a>
+              <!--
               <a class="item-nav navbar-item" href="./assets/html/Full Stack Developer.html">Full Stack Developer</a>
+              -->
             </div>
           </div>
         </div>
@@ -103,9 +105,13 @@
   <!-- cycle image part -->
   <div id="cycle_container">
     <div id="cycle_img">
-      <a id="cycle_img_url" href="https://ipic2025.pi.events/">
-        <img id="slideshow" src="./assets/cycle_images/project1.png">
+      <img id="slideshow" src="./assets/cycle_images/project1.png">
+      <!--
+            <a id="cycle_img_url" href="https://ipic2025.pi.events/">
+        
       </a>
+      -->
+
     </div>
     <button id="prevButton" style="position:absolute; left:-5px; top:265px;" title="Next"> <img
         src="./assets/cycle_images/button/left_button.svg" width="30px;"> </button>
@@ -129,7 +135,7 @@
   <script type="text/javascript">
     const images = [ "./assets/cycle_images/project1.png", "./assets/cycle_images/project2.png", "./assets/cycle_images/project3.jpg", "./assets/cycle_images/project4.jpg"];
     const project_text = ["Spatial-temporal traceability for cyber-physical industry 4.0 systems", "Out-of-order execution enabled deep reinforcement learning for dynamic additive manufacturing scheduling", "Indoor Positioning Systems in Industry 4.0 Applications", "Digital Twin-Driven Pose Estimation and Trajectory Prediction for MiC On-site Stacking via Spatio-Temporal Feature Fusion Modeling"];
-    const pic_url = ["https://ipic2025.pi.events/", "", "", ""];
+    const pic_url = ["", "", "", ""];
     let currentIndex = 0;
     document.getElementById("prevButton").addEventListener("click", function () {
       currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环切换到前一张
