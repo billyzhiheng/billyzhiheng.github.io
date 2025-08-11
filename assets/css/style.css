@@ -761,7 +761,7 @@ footer .column {
 #content_div {
   display: flex;
   flex-direction: row;
-  width: 90%;
+  width: 92%;
   margin-left: 5%;
   /* width: var(--project-width);
   margin-left: var(--project-margin); */
@@ -777,6 +777,7 @@ footer .column {
   height: 500px;
   margin-top: 55px;
   padding: 5px;
+  background-color: transparent;
   /* margin-left:-5%; */
 
   /* background-color: blue;
@@ -787,7 +788,7 @@ footer .column {
 #publication_div {
   display: flex;
   flex-direction: column;
-  margin-left: 0;
+  margin-left: -5px;
   margin-top: 10px;
   flex: 7.5;
 }
