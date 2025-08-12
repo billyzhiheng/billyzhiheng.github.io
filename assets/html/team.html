@@ -614,6 +614,193 @@
       
 
     </div>
+
+    <div class="line-text">
+      <h2 class="subheading text-center text-with-line">Team Pictures</h2>
+    </div>
+<style>
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1100px;
+    padding: 18px 0;
+  }
+  .gallery-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: flex-end;
+    transition: gap 1.2s cubic-bezier(.22,1,.36,1);
+  }
+  .img-box {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 220px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      flex-grow 1.2s cubic-bezier(.22,1,.36,1),
+      flex-basis 1.2s cubic-bezier(.22,1,.36,1),
+      width 1.2s cubic-bezier(.22,1,.36,1);
+    position: relative;
+  }
+  .img-box img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    background: #eee;
+    transition:
+      width 1.2s cubic-bezier(.22,1,.36,1),
+      object-fit 0.7s cubic-bezier(.22,1,.36,1),
+      box-shadow 0.3s,
+      border-radius 0.3s;
+    cursor: pointer;
+    display: block;
+  }
+  .img-box.expanded {
+    flex: 1.8 1 0; /* 放大时适度增大 */
+    z-index: 2;
+  }
+  .img-box.expanded img {
+    object-fit: contain;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    border-radius: 12px;
+  }
+  .img-box.shrunk {
+    flex: 0.7 1 0; /* 其它收缩但不为0，避免留白 */
+  }
+  @media (max-width: 900px) {
+    .gallery-row {
+      gap: 8px;
+    }
+    .img-box,
+    .img-box img {
+      height: 110px;
+    }
+  }
+  @media (max-width: 700px) {
+    .gallery {
+      gap: 10px;
+    }
+    .gallery-row {
+      gap: 6px;
+    }
+    .img-box,
+    .img-box img {
+      height: 70px;
+    }
+  }
+</style>
+
+<div class="gallery">
+  <!-- 第一行 -->
+  <div class="gallery-row">
+    <div class="img-box">
+      <a href="../images/people/gallery/International  Conferene/APMS 2024/Sun Mingyue.jpg" target="_blank">
+        <img src="../images/people/gallery/International  Conferene/APMS 2024/Sun Mingyue.jpg" alt="Sun Mingyue">
+      </a>
+    </div>
+    <div class="img-box">
+      <a href="../images/people/gallery/International  Conferene/Case 2024/Li Peisen (2).jpg" target="_blank">
+        <img src="../images/people/gallery/International  Conferene/Case 2024/Li Peisen (2).jpg" alt="Li Peisen 2">
+      </a>
+    </div>
+    <div class="img-box">
+      <a href="../images/people/gallery/International  Conferene/Case 2024/Li Peisen.jpg" target="_blank">
+        <img src="../images/people/gallery/International  Conferene/Case 2024/Li Peisen.jpg" alt="Li Peisen">
+      </a>
+    </div>
+    <div class="img-box">
+      <a href="../images/people/gallery/International  Conferene/Case 2024/Sun Mingyue (2).jpg" target="_blank">
+        <img src="../images/people/gallery/International  Conferene/Case 2024/Sun Mingyue (2).jpg" alt="Sun Mingyue 2">
+      </a>
+    </div>
+    <div class="img-box">
+      <a href="../images/people/gallery/International  Conferene/Case 2024/Sun Mingyue.jpg" target="_blank">
+        <img src="../images/people/gallery/International  Conferene/Case 2024/Sun Mingyue.jpg" alt="Sun Mingyue">
+      </a>
+    </div>
+  </div>
+  <!-- 第二行 -->
+  <div class="gallery-row">
+    <div class="img-box">
+      <a href="../images/people/gallery/International  Conferene/IFAC MIM 2025/Li Jinpeng.jpg" target="_blank">
+        <img src="../images/people/gallery/International  Conferene/IFAC MIM 2025/Li Jinpeng.jpg" alt="Li Jinpeng">
+      </a>
+    </div>
+    <div class="img-box">
+      <a href="../images/people/gallery/International  Conferene/IFAC MIM 2025/Li Jinpeng (2).jpg" target="_blank">
+        <img src="../images/people/gallery/International  Conferene/IFAC MIM 2025/Li Jinpeng (2).jpg" alt="group">
+    </a>
+    </div>
+    <div class="img-box">
+      <a href="../images/people/gallery/International  Conferene/IPIC/Song Wanyi.jpg" target="_blank">
+        <img src="../images/people/gallery/International  Conferene/IPIC/Song Wanyi.jpg" alt="Song Wanyi">
+      </a>
+    </div>
+    <div class="img-box">
+      <a href="../images/people/gallery/International  Conferene/RS Conference/group.jpg" target="_blank">
+        <img src="../images/people/gallery/International  Conferene/RS Conference/group.jpg" alt="group">
+      </a>
+    </div>
+
+  </div>
+  <!-- 第三行 -->
+  <div class="gallery-row">
+        <div class="img-box">
+      <a href="../images/people/gallery/Team/6fd1ac8b7742034a688b6cbf4fb40ec6.jpg" target="_blank">
+        <img src="../images/people/gallery/Team/6fd1ac8b7742034a688b6cbf4fb40ec6.jpg" alt="group">
+      </a>
+    </div>
+    <div class="img-box">
+      <a href="../images/people/gallery/Team/DSC06358.JPG" target="_blank">
+        <img src="../images/people/gallery/Team/DSC06358.JPG" alt="group">
+      </a>
+    </div>
+    <div class="img-box">
+      <a href="../images/people/gallery/Team/DSC06437.JPG" target="_blank">
+        <img src="../images/people/gallery/Team/DSC06437.JPG" alt="group">
+      </a>
+    </div>
+    <div class="img-box">
+      <a href="../images/people/gallery/Team/DSC06445.JPG" target="_blank">
+        <img src="../images/people/gallery/Team/DSC06445.JPG" alt="group">
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 只影响本行
+  document.querySelectorAll('.gallery-row').forEach(row => {
+    const boxes = row.querySelectorAll('.img-box');
+    boxes.forEach(box => {
+      box.addEventListener('mouseenter', function() {
+        boxes.forEach(b => {
+          b.classList.remove('expanded', 'shrunk');
+        });
+        box.classList.add('expanded');
+        boxes.forEach(b => {
+          if (b !== box) b.classList.add('shrunk');
+        });
+      });
+      box.addEventListener('mouseleave', function() {
+        boxes.forEach(b => {
+          b.classList.remove('expanded', 'shrunk');
+        });
+      });
+    });
+  });
+</script>
+
+
   </div>
 
 
