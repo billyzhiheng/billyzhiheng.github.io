@@ -106,20 +106,17 @@
   <!-- cycle image part -->
   <div id="cycle_container">
     <div id="cycle_img">
-      <img id="slideshow" src="./assets/cycle_images/project1.png">
-      <!--
-            <a id="cycle_img_url" href="https://ipic2025.pi.events/">
-        
+      <a id="cycle_img_url" href="https://www.sciencedirect.com/science/article/pii/S0957417424026253">
+        <img id="slideshow" src="./assets/cycle_images/Multi-order attributes information fusion via hypergraph matching for popular fashion compatibility analysis.jpg">
       </a>
-      -->
-
     </div>
     <button id="prevButton" style="position:absolute; left:-5px; top:265px;" title="Next"> <img
         src="./assets/cycle_images/button/left_button.svg" width="30px;"> </button>
     <button id="nextButton" style="position:absolute; right:-5px; top:265px;" title="Previous"> <img
         src="./assets/cycle_images/button/right_button.svg" width="30px;"> </button>
+
     <div id="project_title">
-      <p id="project_intro">Spatial-temporal traceability for cyber-physical industry 4.0 systems </p>
+      <p id="project_intro">Multi-order attributes information fusion via hypergraph matching for popular fashion compatibility analysis</p>
     </div>
   </div>
   <div id="dot_container" style="text-align:center;margin-top:5px;">
@@ -129,14 +126,27 @@
       style="height:12px;width:12px;margin:2px;background-color:#bbb;border-radius:50%;display:inline-block;"></span>
     <span class="dot"
       style="height:12px;width:12px;margin:2px;background-color:#bbb;border-radius:50%;display:inline-block;"></span>
-
+    <span class="dot"
+      style="height:12px;width:12px;margin:2px;background-color:#bbb;border-radius:50%;display:inline-block;"></span>
     <span class="dot"
       style="height:12px;width:12px;margin:2px;background-color:#bbb;border-radius:50%;display:inline-block;"></span>
   </div>
   <script type="text/javascript">
-    const images = [ "./assets/cycle_images/project1.png", "./assets/cycle_images/project2.png", "./assets/cycle_images/project3.jpg", "./assets/cycle_images/project4.jpg"];
-    const project_text = ["Spatial-temporal traceability for cyber-physical industry 4.0 systems", "Out-of-order execution enabled deep reinforcement learning for dynamic additive manufacturing scheduling", "Indoor Positioning Systems in Industry 4.0 Applications", "Digital Twin-Driven Pose Estimation and Trajectory Prediction for MiC On-site Stacking via Spatio-Temporal Feature Fusion Modeling"];
-    const pic_url = ["", "", "", ""];
+    const images = [ "./assets/cycle_images/Multi-order attributes information fusion via hypergraph matching for popular fashion compatibility analysis.jpg",
+                    "./assets/cycle_images/project1.png",
+                    "./assets/cycle_images/project2.png", 
+                    "./assets/cycle_images/project3.jpg", 
+                    "./assets/cycle_images/DT-PoseFormer A Digital Twin-enabled Stacking System for .png"];
+    const project_text = ["Multi-order attributes information fusion via hypergraph matching for popular fashion compatibility analysis",
+                          "Spatial-temporal traceability for cyber-physical industry 4.0 systems",
+                          "Out-of-order execution enabled deep reinforcement learning for dynamic additive manufacturing scheduling",
+                          "Indoor positioning systems in industry 4.0 applications: Current status, opportunities, and future trends", 
+                          "DT-PoseFormer: A Digital Twin-enabled Stacking System for Precise Pose Estimation of MiC Modules"];
+    const pic_url = ["https://www.sciencedirect.com/science/article/pii/S0957417424026253", 
+                      "https://www.sciencedirect.com/science/article/pii/S0278612524000402",
+                      "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4821903", 
+                      "https://www.sciencedirect.com/science/article/pii/S2950550X24000207", 
+                      "https://ieeexplore.ieee.org/document/10711698"];
     let currentIndex = 0;
     document.getElementById("prevButton").addEventListener("click", function () {
       currentIndex = (currentIndex - 1 + images.length) % images.length; // 循环切换到前一张
@@ -205,20 +215,7 @@
       <div class="column">
         <h2 class="heading">Matrix</h2>
         <p class="subheading" style="text-align: justify;">
-          Ir. Dr. Zhiheng Zhao is currently a Research Assistant Professor and Director of the Industrialized
-          Construction Joint Lab at the Department of Industrial and Systems Engineering, The Hong Kong Polytechnic
-          University. Prior to joining PolyU, he was an Associate Professor at Nanjing University of Posts &
-          Telecommunications and a Post-Doctoral Fellow at The University of Hong Kong. He received his Ph.D. degree
-          from The University of Hong Kong in 2017. Dr. Zhao’s main research interests include industrial
-          spatial-temporal intelligence, digital twins, smart manufacturing and logistics, and construction metaverse.
-          He has served as a Senior Member of IEEE, member of IISE, and ASME, as well as a founding committee member of
-          the Youth Scholar Committee on Digital Twins (China) and a Council Member of the Manufacturing Informatization
-          Division of the Guangdong Mechanical Engineering Society. He has been selected for the Jiangsu Province Dual
-          Innovation Talent Program and the HKSAR Cyberport Incubation Program. Dr. Zhao has published over 50 academic
-          papers and has been the Principal Investigator of multiple research projects, including those funded by the
-          NSFC, ITF, NSF-Guangdong, NSF-Jiangsu, China Postdoctoral Science Foundation, and State Key Laboratory, with a
-          total research funding exceeding HKD 15 million. Additionally, his research has been successfully applied in
-          the industrial sector, securing over HKD 15 million in collaborative research projects.
+          Ir. Dr. Zhiheng Zhao is currently a Research Assistant Professor and Director of the Industrialized Construction Joint Lab at the Department of Industrial and Systems Engineering, The Hong Kong Polytechnic University. Prior to joining PolyU, he was an Associate Professor at Nanjing University of Posts & Telecommunications and a Post-Doctoral Fellow at The University of Hong Kong. He received his Ph.D. degree from The University of Hong Kong in 2017. Dr. Zhao’s main research interests include industrial spatial-temporal intelligence, digital twins, smart manufacturing and logistics, and construction metaverse. He has served as a Senior Member of IEEE, member of HKIE, IISE, and ASME, as well as a founding committee member of the Youth Scholar Committee on Digital Twins (China) and a Council Member of the Manufacturing Informatization Division of the Guangdong Mechanical Engineering Society. Dr. Zhao has published over 60 academic papers and has been the Principal Investigator of multiple research projects, including those funded by the RGC, NSFC, ITF, NSF-Guangdong, NSF-Jiangsu, China Postdoctoral Science Foundation, and State Key Laboratory, with a total research funding exceeding HKD 27 million.
         </p>
       </div>
       <!-- <div class="column is-half image-half">
