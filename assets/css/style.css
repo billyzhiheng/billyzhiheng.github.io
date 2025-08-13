@@ -31,7 +31,7 @@ body {
 }
 
 .navbar-end {
-  padding-right: 50px;
+  padding-right: 60px;
 }
 
 .navbar-end .navbar-item img:hover {
@@ -776,6 +776,7 @@ footer .column {
   bottom: 50px;
   height: 500px;
   margin-top: 55px;
+  margin-left: -6%;
   padding: 5px;
   background-color: transparent;
   /* margin-left:-5%; */
@@ -825,6 +826,7 @@ footer .column {
 }
 
 #project_detail,
+#impact_detail,
 #publication_detail {
   font-family: 'Poppins', sans-serif;
   color: black;
