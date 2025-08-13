@@ -105,6 +105,9 @@
                     <a id="link4">Conference Papers</a>
                 </div>
                 <div id="navigation" style="margin-top: 50px;">
+                    <a id="link6">Patents</a>
+                </div>
+                <div id="navigation" style="margin-top: 50px;">
                     <a id="link5" href="https://scholar.google.com/citations?hl=zh-CN&user=AwDLDGkAAAAJ"> >>More</a>
                 </div>
             </div>
@@ -348,18 +351,90 @@
                         Management: A Case Study in Hong Kong. In 2023 IEEE 19th International Conference on Automation
                         Science and Engineering (CASE) (pp. 1-6). IEEE.</span>
                 </p>
+
+                  <!-- part3 -->
+                <div id="publication_class_Patents"></div>
+                <p id="title_text">
+                    <span>Patents</span>
+                </p>
+
+                <p id="year">
+                    Invention
+                </p>
+                
+                <p id="publication_detail">
+                    <span>[1] Zhiheng Zhao, Aoxiang Chen, Mengdi Zhang, Dengyin Zhang. ‘A production logistics resource allocation method based on dynamic spatiotemporal knowledge graph’. CN202210298702.7 (In examination)</span>
+                </p>
+
+                <p id="publication_detail">
+                    <span>[2] Zhiheng Zhao, Huixing Yang, Dengyin Zhang. ‘A cold chain logistics quality management system’. CN202210748327.1 (In examination)</span>
+                </p>
+
+                <p id="publication_detail">
+                    <span>[3] Zhiheng Zhao, Mengdi Zhang, Dengyin Zhang, Shasha Zhao. ‘An indoor and outdoor joint positioning method and device for a work vehicle based on Internet of Things’. CN202010088014.9 (In examination)</span>
+                </p>
+
+                <p id="publication_detail">
+                    <span>[4] Zhiheng Zhao, Mengdi Zhang, Dengyin Zhang. ‘A method and system for identifying and locating a trailer used in a hazardous chemical parking lot’. ZL201911070277.0 (Granted and Transferred)</span>
+                </p>
+
+                <p id="publication_detail">
+                    <span>[5] Zhiheng Zhao, Qing Zhong. ‘A smart warehouse management system’. CN201910346371.8 (In examination)</span>
+                </p>
+
+                <p id="year">
+                    Utility Model
+                </p>
+                
+                <p id="publication_detail">
+                    <span>[1] Guoquan Huang, Ji Fang, Zhiheng Zhao. ‘A distributed multi-functional indoor positioning base station’. CN201420583450.3 (Granted)</span>
+                </p>
+
+                <p id="publication_detail">
+                    <span>[2] Ji Fang, Guoquan Huang, Zhiheng Zhao. ‘A smart lamp holder with Bluetooth positioning function’.  CN201520108852.2 (Granted)</span>
+                </p>
+
+                <p id="publication_detail">
+                    <span>[3] Ming Li, Zhiheng Zhao, Leidi Shen, ‘An order picking system’, CN215754511U, 08/02/2022. (Granted)</span>
+                </p>
+
+                <p id="publication_detail">
+                    <span>[4] Ming Li, Zhiheng Zhao, Leidi Shen, ‘An inventory system’, CN215006710U, 03/12/2021. (Granted)</span>
+                </p>
+
+                <p id="year">
+                    Software Copyrights
+                </p>
+                
+                <p id="publication_detail">
+                    <span>[1] ‘CPS Additive reality based inbound management mobile application system’ V1.0 2020SR0521601.</span>
+                </p>
+
+                <p id="publication_detail">
+                    <span>[2] ‘Smart logistics buffering management system’ V1.1, 2019SR0801270.</span>
+                </p>
+
+                <p id="publication_detail">
+                    <span>[3] ‘Smart warehouse buffering management system’ V1.1, 2019SR0800812.</span>
+                </p>
+
             </div>
 
             <script>
                 var link3 = document.querySelector('#link3')
                 var link4 = document.querySelector('#link4')
+                var link6 = document.querySelector('#link6')
                 var cc3 = document.querySelector('#publication_class_journal_1')
                 var cc4 = document.querySelector('#publication_class_Conference')
+                var cc6 = document.querySelector('#publication_class_Patents')
                 link3.addEventListener('click', function () {
                     to(cc3)
                 });
                 link4.addEventListener('click', function () {
                     to(cc4)
+                });
+                link6.addEventListener('click', function () {
+                    to(cc6)
                 });
                 function to(toEl) {
                     // toEl 为指定跳转到该位置的DOM节点
