@@ -122,7 +122,7 @@
     </div>
     <div id="Maintainers">
       <div class="column">
-        <div class="card" style="width:1100px;margin-top:-50px; height:450px;">
+        <div class="card" style="width:1100px;margin-top:-50px; min-height:450px;">
           <div class="card-content info">
             <div class="img-container">
               <img src="../images/people/teacher/Zhao.png">
@@ -136,7 +136,7 @@
                 Smart
                 manufacturing/logistics
               </h4>
-              <h4 style="margin-top:15px; text-align: justify;">Dr. Zhiheng Zhao (Billy) is currently a Research
+              <h4 style="margin-top:15px; text-align: justify;padding-right:18px;">Dr. Zhiheng Zhao (Billy) is currently a Research
                 Assistant Professor in the Department of Industrial
                 and Systems Engineering (ISE), The Hong Kong Polytechnic University. He received Ph.D. degree in
                 Logistics
@@ -151,12 +151,7 @@
                 </span>
               </div>
 
-              <script language="JavaScript" type="text/JavaScript">
-                var ml="zhiheng.zh"+"ao"+"@po"+"lyu.ed"+"u.hk";
-                document.getElementById("display email1").textContent=ml;
-              </script>
-
-              <div class="card-content social-links" style="width:50%;margin-left:-7%;background-color:transparent;">
+              <div class="card-content social-links" style="width:60%;margin-left:-7%;background-color:transparent;">
                 <a href="https://www.linkedin.com/in/zhiheng-zhao-370032176/">
                   <i class="fab fa-linkedin" aria-hidden="true" style="font-size: 30px;">
                   </i>
@@ -174,24 +169,95 @@
                 <a href="https://www.polyu.edu.hk/ise/people/academic-staff/zhiheng-zhao/">
                   <img src="../images/icon/polyu.jpg" width="30px;" style="margin-top:-2.5px;">
                 </a>
-                <!-- <a id="expandBtn">
-                  <img src="../images/icon/polyu.jpg" width="30px;" style="margin-top:-2.5px;">
-                </a> -->
+                <button class="expand-btn" id="expandBtn" style="display: flex; align-items: center;">
+                  <i class="fa fa-chevron-down" style="background: transparent;margin-top:-2.5px;"></i>
+                  <span class="expand-tip" id="expandTip" style="margin-left:5px;margin-top:-4px;color:#081529; font-family: 'Poppins', sans-serif;font-size:0.7em; cursor:pointer;background: transparent;">
+                    More
+                  </span>
+                </button>
+                
               </div>
-              <!-- <div class="expand-content" id="expandContent">
-                <h5>Teaching Projects</h5>
+              <div class="expand-content" id="expandContent">
+                <h5>Teaching Activity and Evaluation</h5>
                 <ul>
-                  <li>ISE501: Smart Manufacturing Systems</li>
-                  <li>ISE315: Industrial IoT Fundamentals</li>
-                  <li>ISE630: Data Analytics for Logistics</li>
+                  <li>ISE5332: Smart manufacturing operations management,Postgraduate, 2024/2.</li>
+                  <li>ISE386: Integrated Design for Manufacture, Undergraduate, 2024/1 </li>
+                  <li>ENG4001: Project Management, Undergraduate, 2023/2</li>
+                  <li>ISE386: Integrated Design for Manufacture, 2023/1</li>
                 </ul>
-                <h5>Industry Collaboration Projects</h5>
+                <h5>Entrepreneurship</h5>
                 <ul>
-                  <li>Digital Twin for Smart Warehouse (with TechCo, 2024)</li>
-                  <li>Industrial IoT-based Asset Tracking System (with LogisticsCorp, 2023)</li>
-                  <li>AI-driven Production Scheduling for Electronics Factory (with E-Factory, 2022)</li>
+                  <li>Co-founder and CEO of Gantan Limited Hong Kong</li>
+                  <li>HKSAR Government, Incubatee of Cyberport Incubation Program 2017 HK$330,000, 09/2017-09/2019.</li>
+                  <li>Hangzhou Qingshan Lake Innovation Project, CNY￥4,000,000, 09/2018-09/2020.</li>
                 </ul>
-              </div> -->
+              </div>
+
+              <style>
+                .expand-btn {
+                  background: transparent;
+                  border: none;
+                  border-radius: 5%;
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  transition: background 0.8s;
+                  font-size: 1.4em;
+                  margin-top: -5px;
+                  width: 16.67%;
+                }
+
+                .expand-btn:hover {
+                  background: #d1d6ff;
+                }
+
+                .expand-content {
+                  display: none;
+                  margin-top: 5px;
+                  background: #f8f9fe;
+                  border-radius: 0px;
+                  padding: 18px 18px 8px 0px;
+                  box-shadow: 0 1px 4px rgba(40, 60, 120, 0.08);
+                  animation: fadeIn 0.35s;
+
+                }
+
+                .expand-content h5 {
+                  margin: 0 10px 10px 0;
+                  font-size: 1.1em;
+                  font-family: 'Poppins', sans-serif;
+                  color: #192144;
+                  font-weight: bold;
+                }
+
+                .expand-content ul {
+                  padding-left: 0px;
+                  margin: 0 0 0px 0;
+                }
+
+                .expand-content li {
+                  margin-bottom: 6px;
+                  font-size: 1em;
+                  color: #262b36;
+                }
+              </style>
+              <script language="JavaScript" type="text/JavaScript">
+                var ml="zhiheng.zh"+"ao"+"@po"+"lyu.ed"+"u.hk";
+                document.getElementById("display email1").textContent=ml;
+
+                // 展开与收起
+                const expandBtn = document.getElementById('expandBtn');
+                const expandContent = document.getElementById('expandContent');
+                const expandIcon = expandBtn.querySelector('i');
+
+                expandBtn.addEventListener('click', function () {
+                const isShown = expandContent.style.display === 'block';
+                expandContent.style.display = isShown ? 'none' : 'block';
+                expandIcon.className = isShown ? 'fa fa-chevron-down' : 'fa fa-chevron-up';
+                expandTip.textContent = isShown ? 'more' : 'less';
+                });
+              </script>
             </div>
           </div>
 
