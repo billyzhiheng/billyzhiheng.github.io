@@ -1,1 +1,10 @@
-github.io/
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+
+# Optional local
+.env
+.env.*
