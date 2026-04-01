@@ -33,7 +33,11 @@
 
     function setMoreHref(href) {
       if (!moreLink) return;
-      if (href && href !== '#') moreLink.href = href;
+      if (href && href !== '#') {
+        moreLink.href = href;
+        moreLink.removeAttribute('aria-disabled');
+        moreLink.dataset.ready = '1';
+      }
     }
 
     function open() {
@@ -58,7 +62,22 @@
           '<div id="wrap"><div id="map"></div></div>' +
           '<script>' +
           '(function(){' +
-          'function postMore(){try{var a=document.querySelector("a[href*=\\"clustrmaps.com\\"]"); if(a&&a.href){parent.postMessage({type:\\"clustrmaps:more\\", href:a.href}, \\"*\\");}}catch(e){}}' +
+          'function postMore(){' +
+          'try{' +
+          'var as=[].slice.call(document.querySelectorAll("a[href]"));' +
+          'var pick=null;' +
+          'as.forEach(function(a){' +
+          'var href=(a.getAttribute("href")||"").trim();' +
+          'if(!href||href==="#"||href.indexOf("javascript:")===0) return;' +
+          '// Try to find the traffic/details link (usually contains clustrmaps and is not the JS asset).' +
+          'var h=(a.href||href).toLowerCase();' +
+          'if(h.indexOf("clustrmaps")!==-1 && h.indexOf("map_v2.js")===-1 && h.indexOf(".js")===-1){' +
+          'pick=a.href||href;' +
+          '}' +
+          '});' +
+          'if(pick){parent.postMessage({type:"clustrmaps:more", href:pick}, "*");}' +
+          '}catch(e){}' +
+          '}' +
           'function softenClickThrough(){' +
           'try{' +
           'var anchors=[].slice.call(document.querySelectorAll("a[href]"));' +
@@ -104,6 +123,17 @@
         setMoreHref(e.data.href);
       }
     });
+
+    if (moreLink) {
+      moreLink.setAttribute('aria-disabled', 'true');
+      moreLink.dataset.ready = '0';
+      moreLink.addEventListener('click', function (e) {
+        // If we haven't obtained the real traffic link yet, don't jump to "#".
+        if (!moreLink.href || moreLink.getAttribute('href') === '#' || moreLink.dataset.ready !== '1') {
+          e.preventDefault();
+        }
+      });
+    }
 
     modal.addEventListener('click', function (e) {
       var el = e.target;
