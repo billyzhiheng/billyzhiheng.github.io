@@ -32,30 +32,37 @@
       (function () {
         function softenClickThrough() {
           try {
-            // Disable the large click-through overlay link (traffic/details),
-            // but keep Leaflet zoom controls clickable.
-            var anchors = [].slice.call(document.querySelectorAll('a[href]'));
-            var overlays = anchors.filter(function (a) {
+            // ClustrMaps wraps the whole widget in an <a> that navigates to its traffic page.
+            // We *do not* disable pointer-events (that would also break internal zoom controls).
+            // Instead, keep it clickable but prevent the default navigation.
+            var overlays = [].slice.call(document.querySelectorAll('a[href]')).filter(function (a) {
               var href = (a.getAttribute('href') || '').toLowerCase();
-              // Typical traffic link format on ClustrMaps.
               return href.indexOf('clustrmaps.com/site/') !== -1;
             });
 
             overlays.forEach(function (a) {
-              a.style.pointerEvents = 'none';
+              if (a.dataset && a.dataset.navBlocked === '1') return;
+              if (a.dataset) a.dataset.navBlocked = '1';
               a.style.cursor = 'default';
+              a.addEventListener(
+                'click',
+                function (e) {
+                  // Stop the top-level navigation to clustrmaps traffic page.
+                  e.preventDefault();
+                },
+                true
+              );
             });
 
-            var leaflet = document.querySelector('.leaflet-control-container');
-            if (leaflet) {
-              leaflet.style.pointerEvents = 'auto';
-              leaflet.style.position = 'relative';
-              leaflet.style.zIndex = '9999';
-              var zs = leaflet.querySelectorAll('a,button');
-              zs.forEach(function (el) {
-                el.style.pointerEvents = 'auto';
-              });
-            }
+            // Ensure jVectorMap zoom controls are above any overlay layers.
+            var zoomIn = document.querySelector('.jvectormap-zoomin');
+            var zoomOut = document.querySelector('.jvectormap-zoomout');
+            [zoomIn, zoomOut].forEach(function (el) {
+              if (!el || !el.style) return;
+              el.style.pointerEvents = 'auto';
+              el.style.position = 'relative';
+              el.style.zIndex = '10000';
+            });
           } catch (e) {}
         }
 
