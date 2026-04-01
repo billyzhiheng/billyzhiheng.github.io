@@ -19,6 +19,56 @@
     });
   }
 
+  function initVisitorMapModal() {
+    var trigger = document.querySelector('[data-visitor-map-trigger]');
+    var modal = document.querySelector('[data-visitor-map-modal]');
+    var container = document.querySelector('[data-visitor-map-container]');
+    if (!trigger || !modal || !container) return;
+
+    var CLUSTR_SRC =
+      'https://clustrmaps.com/map_v2.js?d=1CBNZi8bKxprKVZkGSt6htJ7dHSEdmLkUldnOU1MJDE&cl=ffffff&w=a';
+    var loaded = false;
+
+    function open() {
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.documentElement.classList.add('modal-open');
+
+      if (!loaded) {
+        loaded = true;
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.id = 'clustrmaps';
+        script.async = true;
+        script.src = CLUSTR_SRC;
+        container.appendChild(script);
+      }
+
+      try {
+        trigger.blur();
+      } catch (e) {}
+    }
+
+    function close() {
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('modal-open');
+    }
+
+    trigger.addEventListener('click', open);
+
+    modal.addEventListener('click', function (e) {
+      var el = e.target;
+      if (el && el.hasAttribute && el.hasAttribute('data-visitor-map-close')) {
+        close();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+  }
+
   function getTheme() {
     try {
       return localStorage.getItem(KEY) || 'light';
@@ -38,6 +88,7 @@
   }
   function init() {
     initProtectedEmails();
+    initVisitorMapModal();
     var theme = getTheme();
     document.documentElement.classList.toggle('dark-mode', theme === 'dark');
     var radios = document.querySelectorAll('input[name="color"]');
