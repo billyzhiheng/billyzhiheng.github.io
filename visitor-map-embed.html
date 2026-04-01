@@ -32,14 +32,18 @@
       (function () {
         function softenClickThrough() {
           try {
+            // Disable the large click-through overlay link (traffic/details),
+            // but keep Leaflet zoom controls clickable.
             var anchors = [].slice.call(document.querySelectorAll('a[href]'));
-            anchors.forEach(function (a) {
+            var overlays = anchors.filter(function (a) {
               var href = (a.getAttribute('href') || '').toLowerCase();
-              // Disable the big click-through overlay (traffic link),
-              // but keep Leaflet zoom controls clickable.
-              if (href.indexOf('clustrmaps') !== -1) {
-                a.style.pointerEvents = 'none';
-              }
+              // Typical traffic link format on ClustrMaps.
+              return href.indexOf('clustrmaps.com/site/') !== -1;
+            });
+
+            overlays.forEach(function (a) {
+              a.style.pointerEvents = 'none';
+              a.style.cursor = 'default';
             });
 
             var leaflet = document.querySelector('.leaflet-control-container');
