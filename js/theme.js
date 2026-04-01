@@ -27,7 +27,7 @@
     if (!trigger || !modal || !container) return;
 
     var CLUSTR_SRC =
-      'https://clustrmaps.com/map_v2.js?d=1CBNZi8bKxprKVZkGSt6htJ7dHSEdmLkUldnOU1MJDE&cl=ffffff&w=a';
+      'https://cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=tt&d=1CBNZi8bKxprKVZkGSt6htJ7dHSEdmLkUldnOU1MJDE&co=2d78ad&cmo=3acc3a&cmn=ff5353&ct=ffffff';
     var loaded = false;
     var frame = null;
 
