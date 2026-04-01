@@ -950,6 +950,34 @@ html.dark-mode .visitor-map-modal__backdrop {
   color: var(--wiki-text);
 }
 
+.visitor-map-modal__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.visitor-map-modal__more {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  border: 1px solid var(--wiki-border-light);
+  background: var(--wiki-bg-neutral);
+  border-radius: 6px;
+  color: var(--wiki-text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+.visitor-map-modal__more:hover {
+  background: #eaecf0;
+  text-decoration: none;
+}
+
+html.dark-mode .visitor-map-modal__more:hover {
+  background: var(--wiki-bg-neutral);
+}
+
 .visitor-map-modal__close {
   appearance: none;
   border: 1px solid var(--wiki-border-light);

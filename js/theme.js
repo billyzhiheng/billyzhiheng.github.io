@@ -23,11 +23,22 @@
     var trigger = document.querySelector('[data-visitor-map-trigger]');
     var modal = document.querySelector('[data-visitor-map-modal]');
     var container = document.querySelector('[data-visitor-map-container]');
+    var moreLink = document.querySelector('[data-visitor-map-more]');
     if (!trigger || !modal || !container) return;
 
     var CLUSTR_SRC =
       'https://clustrmaps.com/map_v2.js?d=1CBNZi8bKxprKVZkGSt6htJ7dHSEdmLkUldnOU1MJDE&cl=ffffff&w=a';
     var loaded = false;
+
+    function syncMoreLinkHref() {
+      if (!moreLink) return;
+      // ClustrMaps usually wraps the map with an <a href="...traffic...">...</a>.
+      var a = container.querySelector('a[href]');
+      if (a && a.href) {
+        moreLink.href = a.href;
+        moreLink.removeAttribute('aria-disabled');
+      }
+    }
 
     function open() {
       modal.hidden = false;
@@ -42,6 +53,18 @@
         script.async = true;
         script.src = CLUSTR_SRC;
         container.appendChild(script);
+
+        // Wait for ClustrMaps to inject DOM, then wire up "More".
+        var tries = 0;
+        var timer = setInterval(function () {
+          tries += 1;
+          syncMoreLinkHref();
+          if ((moreLink && moreLink.href && moreLink.href !== '#') || tries >= 40) {
+            clearInterval(timer);
+          }
+        }, 250);
+      } else {
+        syncMoreLinkHref();
       }
 
       try {
@@ -56,6 +79,21 @@
     }
 
     trigger.addEventListener('click', open);
+
+    // Prevent the embedded map's default click-to-traffic navigation,
+    // while still allowing the map's internal UI (zoom buttons, drag, etc).
+    container.addEventListener(
+      'click',
+      function (e) {
+        var target = e.target;
+        if (!target) return;
+        var a = target.closest ? target.closest('a[href]') : null;
+        if (a && container.contains(a)) {
+          e.preventDefault();
+        }
+      },
+      true
+    );
 
     modal.addEventListener('click', function (e) {
       var el = e.target;
