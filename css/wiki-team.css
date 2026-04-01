@@ -873,6 +873,128 @@ html.dark-mode .awards-year {
   margin-top: 1.35em;
 }
 
+.contact-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+
+.visitor-map-trigger {
+  margin-left: auto;
+  appearance: none;
+  border: 1px solid var(--wiki-border-light);
+  background: var(--wiki-bg-neutral);
+  color: var(--wiki-text);
+  border-radius: 6px;
+  padding: 0.05em 0.5em;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.visitor-map-trigger:hover {
+  background: #eaecf0;
+}
+
+html.dark-mode .visitor-map-trigger:hover {
+  background: var(--wiki-bg-neutral);
+}
+
+html.modal-open,
+html.modal-open body {
+  overflow: hidden;
+}
+
+.visitor-map-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.visitor-map-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+html.dark-mode .visitor-map-modal__backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.visitor-map-modal__dialog {
+  position: relative;
+  width: min(900px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  margin: 1rem auto;
+  background: var(--wiki-bg-content);
+  border: 1px solid var(--wiki-border-light);
+  border-radius: 6px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.visitor-map-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--wiki-border-light);
+  font-family: var(--font-sans);
+}
+
+.visitor-map-modal__title {
+  font-weight: 600;
+  color: var(--wiki-text);
+}
+
+.visitor-map-modal__close {
+  appearance: none;
+  border: 1px solid var(--wiki-border-light);
+  background: var(--wiki-bg-neutral);
+  color: var(--wiki-text);
+  border-radius: 6px;
+  padding: 0.15rem 0.55rem;
+  line-height: 1.2;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.visitor-map-modal__close:hover {
+  background: #eaecf0;
+}
+
+html.dark-mode .visitor-map-modal__close:hover {
+  background: var(--wiki-bg-neutral);
+}
+
+.visitor-map-modal__body {
+  padding: 0.75rem 0.85rem 0.95rem;
+  overflow: auto;
+}
+
+.visitor-map-modal__map {
+  display: flex;
+  justify-content: center;
+  min-height: 360px;
+}
+
+.visitor-map-frame {
+  width: min(860px, 100%);
+  height: 520px;
+  border: 0;
+  background: transparent;
+  display: block;
+}
+
+@media (max-width: 520px) {
+  .visitor-map-frame {
+    height: 420px;
+  }
+}
+
 .ref-list,
 .link-list {
   list-style: disc;

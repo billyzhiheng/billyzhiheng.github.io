@@ -19,6 +19,88 @@
     });
   }
 
+  function initVisitorMapModal() {
+    var trigger = document.querySelector('[data-visitor-map-trigger]');
+    var modal = document.querySelector('[data-visitor-map-modal]');
+    var container = document.querySelector('[data-visitor-map-container]');
+    if (!trigger || !modal || !container) return;
+
+    var CLUSTR_SRC =
+      'https://clustrmaps.com/map_v2.js?d=1CBNZi8bKxprKVZkGSt6htJ7dHSEdmLkUldnOU1MJDE&cl=ffffff&w=a';
+    var loaded = false;
+
+    function open() {
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.documentElement.classList.add('modal-open');
+
+      if (!loaded) {
+        loaded = true;
+        var frame = document.createElement('iframe');
+        frame.className = 'visitor-map-frame';
+        frame.setAttribute('title', 'Visitor map');
+        frame.setAttribute('loading', 'lazy');
+        // Prevent navigation from clustrmaps overlay click-through.
+        frame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+
+        var srcdoc =
+          '<!doctype html><html><head><meta charset="utf-8">' +
+          '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+          '<style>html,body{margin:0;padding:0;background:transparent;}#wrap{display:flex;justify-content:center;}</style>' +
+          '</head><body>' +
+          '<div id="wrap"></div>' +
+          '<script>' +
+          '(function(){' +
+          'function softenClickThrough(){' +
+          'try{' +
+          'var anchors=[].slice.call(document.querySelectorAll("a[href]"));' +
+          'anchors.forEach(function(a){' +
+          'var href=(a.getAttribute("href")||"");' +
+          'if(href.indexOf("clustrmaps")!==-1){a.style.pointerEvents="none";}' +
+          '});' +
+          'var leaflet=document.querySelector(".leaflet-control-container");' +
+          'if(leaflet){leaflet.style.pointerEvents="auto"; var zs=leaflet.querySelectorAll("a,button"); zs.forEach(function(el){el.style.pointerEvents="auto";});}' +
+          '}catch(e){}' +
+          '}' +
+          'var mo=new MutationObserver(function(){softenClickThrough();});' +
+          'mo.observe(document.documentElement,{childList:true,subtree:true});' +
+          'window.addEventListener("load",function(){softenClickThrough();});' +
+          '})();' +
+          '</script>' +
+          '<script type="text/javascript" id="clustrmaps" src="' +
+          CLUSTR_SRC +
+          '"></script>' +
+          '</body></html>';
+
+        frame.srcdoc = srcdoc;
+        container.appendChild(frame);
+      }
+
+      try {
+        trigger.blur();
+      } catch (e) {}
+    }
+
+    function close() {
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('modal-open');
+    }
+
+    trigger.addEventListener('click', open);
+
+    modal.addEventListener('click', function (e) {
+      var el = e.target;
+      if (el && el.hasAttribute && el.hasAttribute('data-visitor-map-close')) {
+        close();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+  }
+
   function getTheme() {
     try {
       return localStorage.getItem(KEY) || 'light';
@@ -38,6 +120,7 @@
   }
   function init() {
     initProtectedEmails();
+    initVisitorMapModal();
     var theme = getTheme();
     document.documentElement.classList.toggle('dark-mode', theme === 'dark');
     var radios = document.querySelectorAll('input[name="color"]');
