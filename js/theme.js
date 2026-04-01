@@ -51,8 +51,8 @@
         frame.className = 'visitor-map-frame';
         frame.setAttribute('title', 'Visitor map');
         frame.setAttribute('loading', 'lazy');
-        // Avoid sandbox: some widgets stall at "Loading data" inside sandboxed iframes.
-        // Keeping it in an iframe still prevents replacing the parent page.
+        // Keep scripts working but prevent the widget from navigating the top page.
+        frame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
 
         var srcdoc =
           '<!doctype html><html><head><meta charset="utf-8">' +
