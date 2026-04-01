@@ -1009,6 +1009,20 @@ html.dark-mode .visitor-map-modal__close:hover {
   min-height: 360px;
 }
 
+.visitor-map-frame {
+  width: min(860px, 100%);
+  height: 520px;
+  border: 0;
+  background: transparent;
+  display: block;
+}
+
+@media (max-width: 520px) {
+  .visitor-map-frame {
+    height: 420px;
+  }
+}
+
 .ref-list,
 .link-list {
   list-style: disc;

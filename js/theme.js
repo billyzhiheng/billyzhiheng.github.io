@@ -29,15 +29,11 @@
     var CLUSTR_SRC =
       'https://clustrmaps.com/map_v2.js?d=1CBNZi8bKxprKVZkGSt6htJ7dHSEdmLkUldnOU1MJDE&cl=ffffff&w=a';
     var loaded = false;
+    var frame = null;
 
-    function syncMoreLinkHref() {
+    function setMoreHref(href) {
       if (!moreLink) return;
-      // ClustrMaps usually wraps the map with an <a href="...traffic...">...</a>.
-      var a = container.querySelector('a[href]');
-      if (a && a.href) {
-        moreLink.href = a.href;
-        moreLink.removeAttribute('aria-disabled');
-      }
+      if (href && href !== '#') moreLink.href = href;
     }
 
     function open() {
@@ -47,24 +43,45 @@
 
       if (!loaded) {
         loaded = true;
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.id = 'clustrmaps';
-        script.async = true;
-        script.src = CLUSTR_SRC;
-        container.appendChild(script);
+        frame = document.createElement('iframe');
+        frame.className = 'visitor-map-frame';
+        frame.setAttribute('title', 'Visitor map');
+        frame.setAttribute('loading', 'lazy');
+        // Keep scripts working but prevent the widget from navigating the top page.
+        frame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
 
-        // Wait for ClustrMaps to inject DOM, then wire up "More".
-        var tries = 0;
-        var timer = setInterval(function () {
-          tries += 1;
-          syncMoreLinkHref();
-          if ((moreLink && moreLink.href && moreLink.href !== '#') || tries >= 40) {
-            clearInterval(timer);
-          }
-        }, 250);
-      } else {
-        syncMoreLinkHref();
+        var srcdoc =
+          '<!doctype html><html><head><meta charset="utf-8">' +
+          '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+          '<style>html,body{margin:0;padding:0;background:transparent;}#wrap{display:flex;justify-content:center;}</style>' +
+          '</head><body>' +
+          '<div id="wrap"><div id="map"></div></div>' +
+          '<script>' +
+          '(function(){' +
+          'function postMore(){try{var a=document.querySelector("a[href*=\\"clustrmaps.com\\"]"); if(a&&a.href){parent.postMessage({type:\\"clustrmaps:more\\", href:a.href}, \\"*\\");}}catch(e){}}' +
+          'function softenClickThrough(){' +
+          'try{' +
+          'var anchors=[].slice.call(document.querySelectorAll("a[href]"));' +
+          'anchors.forEach(function(a){' +
+          'var href=a.getAttribute("href")||"";' +
+          '// Disable the big click-through overlay (traffic link), but keep Leaflet zoom controls clickable.' +
+          'if(href.indexOf("clustrmaps.com")!==-1){a.style.pointerEvents="none";}' +
+          '});' +
+          'var leaflet=document.querySelector(".leaflet-control-container");' +
+          'if(leaflet){leaflet.style.pointerEvents="auto"; var zs=leaflet.querySelectorAll("a,button"); zs.forEach(function(el){el.style.pointerEvents="auto";});}' +
+          '}catch(e){}' +
+          '}' +
+          'var mo=new MutationObserver(function(){softenClickThrough(); postMore();});' +
+          'mo.observe(document.documentElement,{childList:true,subtree:true});' +
+          'window.addEventListener("load",function(){softenClickThrough(); postMore();});' +
+          '})();' +
+          '</script>' +
+          '<script type="text/javascript" id="clustrmaps" src="' +
+          CLUSTR_SRC +
+          '"></script>' +
+          '</body></html>';
+        frame.srcdoc = srcdoc;
+        container.appendChild(frame);
       }
 
       try {
@@ -80,20 +97,13 @@
 
     trigger.addEventListener('click', open);
 
-    // Prevent the embedded map's default click-to-traffic navigation,
-    // while still allowing the map's internal UI (zoom buttons, drag, etc).
-    container.addEventListener(
-      'click',
-      function (e) {
-        var target = e.target;
-        if (!target) return;
-        var a = target.closest ? target.closest('a[href]') : null;
-        if (a && container.contains(a)) {
-          e.preventDefault();
-        }
-      },
-      true
-    );
+    // Receive "More" link from iframe once the widget injects it.
+    window.addEventListener('message', function (e) {
+      if (!e || !e.data) return;
+      if (e.data.type === 'clustrmaps:more' && typeof e.data.href === 'string') {
+        setMoreHref(e.data.href);
+      }
+    });
 
     modal.addEventListener('click', function (e) {
       var el = e.target;
