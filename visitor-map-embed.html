@@ -45,6 +45,8 @@
             var leaflet = document.querySelector('.leaflet-control-container');
             if (leaflet) {
               leaflet.style.pointerEvents = 'auto';
+              leaflet.style.position = 'relative';
+              leaflet.style.zIndex = '9999';
               var zs = leaflet.querySelectorAll('a,button');
               zs.forEach(function (el) {
                 el.style.pointerEvents = 'auto';

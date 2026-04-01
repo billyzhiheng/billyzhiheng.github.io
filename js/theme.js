@@ -23,6 +23,7 @@
     var trigger = document.querySelector('[data-visitor-map-trigger]');
     var modal = document.querySelector('[data-visitor-map-modal]');
     var container = document.querySelector('[data-visitor-map-container]');
+    var moreBtn = document.querySelector('[data-visitor-map-more]');
     if (!trigger || !modal || !container) return;
 
     var CLUSTR_SRC =
@@ -57,6 +58,12 @@
     }
 
     trigger.addEventListener('click', open);
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        window.open('https://clustrmaps.com/site/1c9l7', '_blank', 'noopener,noreferrer');
+      });
+    }
 
     modal.addEventListener('click', function (e) {
       var el = e.target;
