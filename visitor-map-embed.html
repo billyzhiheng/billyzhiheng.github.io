@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Visitor Map</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+      }
+      #wrap {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <script
+        type="text/javascript"
+        id="clustrmaps"
+        src="https://clustrmaps.com/map_v2.js?d=1CBNZi8bKxprKVZkGSt6htJ7dHSEdmLkUldnOU1MJDE&cl=ffffff&w=a"
+      ></script>
+    </div>
+
+    <script>
+      (function () {
+        function softenClickThrough() {
+          try {
+            var anchors = [].slice.call(document.querySelectorAll('a[href]'));
+            anchors.forEach(function (a) {
+              var href = (a.getAttribute('href') || '').toLowerCase();
+              // Disable the big click-through overlay (traffic link),
+              // but keep Leaflet zoom controls clickable.
+              if (href.indexOf('clustrmaps') !== -1) {
+                a.style.pointerEvents = 'none';
+              }
+            });
+
+            var leaflet = document.querySelector('.leaflet-control-container');
+            if (leaflet) {
+              leaflet.style.pointerEvents = 'auto';
+              var zs = leaflet.querySelectorAll('a,button');
+              zs.forEach(function (el) {
+                el.style.pointerEvents = 'auto';
+              });
+            }
+          } catch (e) {}
+        }
+
+        var mo = new MutationObserver(function () {
+          softenClickThrough();
+        });
+        mo.observe(document.documentElement, { childList: true, subtree: true });
+        window.addEventListener('load', softenClickThrough);
+      })();
+    </script>
+  </body>
+</html>
