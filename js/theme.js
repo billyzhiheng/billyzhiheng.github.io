@@ -19,6 +19,57 @@
     });
   }
 
+  function initVisitorMapModal() {
+    var trigger = document.querySelector('[data-visitor-map-trigger]');
+    var modal = document.querySelector('[data-visitor-map-modal]');
+    var container = document.querySelector('[data-visitor-map-container]');
+    if (!trigger || !modal || !container) return;
+
+    var CLUSTR_SRC =
+      'https://clustrmaps.com/map_v2.js?d=1CBNZi8bKxprKVZkGSt6htJ7dHSEdmLkUldnOU1MJDE&cl=ffffff&w=a';
+    var loaded = false;
+
+    function open() {
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.documentElement.classList.add('modal-open');
+
+      if (!loaded) {
+        loaded = true;
+        var frame = document.createElement('iframe');
+        frame.className = 'visitor-map-frame';
+        frame.setAttribute('title', 'Visitor map');
+        frame.setAttribute('loading', 'lazy');
+        // Use a real page URL (not srcdoc) so ClustrMaps can load data reliably on GitHub Pages.
+        frame.src = 'visitor-map-embed.html';
+        container.appendChild(frame);
+      }
+
+      try {
+        trigger.blur();
+      } catch (e) {}
+    }
+
+    function close() {
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('modal-open');
+    }
+
+    trigger.addEventListener('click', open);
+
+    modal.addEventListener('click', function (e) {
+      var el = e.target;
+      if (el && el.hasAttribute && el.hasAttribute('data-visitor-map-close')) {
+        close();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+  }
+
   function getTheme() {
     try {
       return localStorage.getItem(KEY) || 'light';
@@ -38,6 +89,7 @@
   }
   function init() {
     initProtectedEmails();
+    initVisitorMapModal();
     var theme = getTheme();
     document.documentElement.classList.toggle('dark-mode', theme === 'dark');
     var radios = document.querySelectorAll('input[name="color"]');
