@@ -22,26 +22,12 @@
   function initVisitorMapModal() {
     var trigger = document.querySelector('[data-visitor-map-trigger]');
     var modal = document.querySelector('[data-visitor-map-modal]');
-    var container = document.querySelector('[data-visitor-map-container]');
-    if (!trigger || !modal || !container) return;
-
-    var loaded = false;
+    if (!trigger || !modal) return;
 
     function open() {
       modal.hidden = false;
       modal.setAttribute('aria-hidden', 'false');
       document.documentElement.classList.add('modal-open');
-
-      if (!loaded) {
-        loaded = true;
-        var frame = document.createElement('iframe');
-        frame.className = 'visitor-map-frame';
-        frame.setAttribute('title', 'Visitor map');
-        frame.setAttribute('loading', 'lazy');
-        // Use a real page URL (not srcdoc) so the visitor map image loads reliably on GitHub Pages.
-        frame.src = 'visitor-map-embed.html';
-        container.appendChild(frame);
-      }
 
       try {
         trigger.blur();
