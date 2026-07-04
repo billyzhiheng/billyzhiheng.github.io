@@ -925,6 +925,7 @@ html.dark-mode .visitor-map-modal__backdrop {
 .visitor-map-modal__dialog {
   position: relative;
   width: min(860px, calc(100vw - 2rem));
+  height: min(680px, calc(100vh - 2rem));
   max-height: calc(100vh - 2rem);
   margin: 1rem auto;
   background: var(--wiki-bg-content);
@@ -985,31 +986,43 @@ html.dark-mode .visitor-map-modal__close:hover {
 }
 
 .visitor-map-modal__body {
-  padding: 0.45rem 0.6rem 0.55rem;
-  overflow: auto;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.5rem 0.45rem;
+  overflow: hidden;
+  min-height: 0;
 }
 
 .visitor-map-modal__map {
+  width: 93%;
+  height: 93%;
   display: flex;
+  align-items: center;
   justify-content: center;
-  min-height: 360px;
-  position: relative;
+  min-height: 0;
 }
 
 .visitor-map-widget {
-  display: block;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
   line-height: 0;
 }
 
 .visitor-map-widget img {
   display: block;
-  width: min(820px, 100%);
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 @media (max-width: 520px) {
-  .visitor-map-modal__map {
-    min-height: 280px;
+  .visitor-map-modal__dialog {
+    height: min(520px, calc(100vh - 1.5rem));
   }
 }
 
