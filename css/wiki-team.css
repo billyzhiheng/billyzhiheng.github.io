@@ -906,6 +906,10 @@ html.modal-open body {
   overflow: hidden;
 }
 
+.visitor-map-modal[hidden] {
+  display: none !important;
+}
+
 .visitor-map-modal {
   position: fixed;
   inset: 0;
@@ -919,7 +923,9 @@ html.modal-open body {
 .visitor-map-modal__backdrop {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
 }
 
 html.dark-mode .visitor-map-modal__backdrop {
@@ -928,6 +934,7 @@ html.dark-mode .visitor-map-modal__backdrop {
 
 .visitor-map-modal__dialog {
   position: relative;
+  z-index: 1;
   width: fit-content;
   max-width: min(860px, calc(100vw - 2rem));
   max-height: calc(100vh - 2rem);

@@ -43,8 +43,7 @@
     trigger.addEventListener('click', open);
 
     modal.addEventListener('click', function (e) {
-      var el = e.target;
-      if (el && el.hasAttribute && el.hasAttribute('data-visitor-map-close')) {
+      if (e.target.closest('[data-visitor-map-close]')) {
         close();
       }
     });
