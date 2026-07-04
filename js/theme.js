@@ -25,8 +25,6 @@
     var container = document.querySelector('[data-visitor-map-container]');
     if (!trigger || !modal || !container) return;
 
-    var CLUSTR_SRC =
-      'https://clustrmaps.com/map_v2.js?d=1CBNZi8bKxprKVZkGSt6htJ7dHSEdmLkUldnOU1MJDE&cl=ffffff&w=a';
     var loaded = false;
 
     function open() {
@@ -40,7 +38,7 @@
         frame.className = 'visitor-map-frame';
         frame.setAttribute('title', 'Visitor map');
         frame.setAttribute('loading', 'lazy');
-        // Use a real page URL (not srcdoc) so ClustrMaps can load data reliably on GitHub Pages.
+        // Use a real page URL (not srcdoc) so MapMyVisitors can load data reliably on GitHub Pages.
         frame.src = 'visitor-map-embed.html';
         container.appendChild(frame);
       }
