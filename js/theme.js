@@ -38,7 +38,7 @@
         frame.className = 'visitor-map-frame';
         frame.setAttribute('title', 'Visitor map');
         frame.setAttribute('loading', 'lazy');
-        // Use a real page URL (not srcdoc) so MapMyVisitors can load data reliably on GitHub Pages.
+        // Use a real page URL (not srcdoc) so the visitor map image loads reliably on GitHub Pages.
         frame.src = 'visitor-map-embed.html';
         container.appendChild(frame);
       }

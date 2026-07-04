@@ -17,61 +17,18 @@
         align-items: flex-start;
         padding: 0;
       }
+      #wrap img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
     </style>
   </head>
   <body>
     <div id="wrap">
-      <script
-        type="text/javascript"
-        id="mapmyvisitors"
-        src="https://mapmyvisitors.com/map.js?d=F5iYzRlinAOcB7WZkENoRUksbcZwj3beEiPDfDk1OMM&cl=ffffff&w=a"
-      ></script>
+      <a href="https://mapmyvisitors.com/web/1c68e" title="Visit tracker" target="_blank" rel="noopener noreferrer">
+        <img src="https://mapmyvisitors.com/map.png?d=F5iYzRlinAOcB7WZkENoRUksbcZwj3beEiPDfDk1OMM&cl=ffffff" alt="Visitor map" />
+      </a>
     </div>
-
-    <script>
-      (function () {
-        function softenClickThrough() {
-          try {
-            // MapMyVisitors wraps the whole widget in an <a> that navigates to its traffic page.
-            // We *do not* disable pointer-events (that would also break internal zoom controls).
-            // Instead, keep it clickable but prevent the default navigation.
-            var overlays = [].slice.call(document.querySelectorAll('a[href]')).filter(function (a) {
-              var href = (a.getAttribute('href') || '').toLowerCase();
-              return href.indexOf('mapmyvisitors.com/web/') !== -1;
-            });
-
-            overlays.forEach(function (a) {
-              if (a.dataset && a.dataset.navBlocked === '1') return;
-              if (a.dataset) a.dataset.navBlocked = '1';
-              a.style.cursor = 'default';
-              a.addEventListener(
-                'click',
-                function (e) {
-                  // Stop the top-level navigation to MapMyVisitors traffic page.
-                  e.preventDefault();
-                },
-                true
-              );
-            });
-
-            // Ensure jVectorMap zoom controls are above any overlay layers.
-            var zoomIn = document.querySelector('.jvectormap-zoomin');
-            var zoomOut = document.querySelector('.jvectormap-zoomout');
-            [zoomIn, zoomOut].forEach(function (el) {
-              if (!el || !el.style) return;
-              el.style.pointerEvents = 'auto';
-              el.style.position = 'relative';
-              el.style.zIndex = '10000';
-            });
-          } catch (e) {}
-        }
-
-        var mo = new MutationObserver(function () {
-          softenClickThrough();
-        });
-        mo.observe(document.documentElement, { childList: true, subtree: true });
-        window.addEventListener('load', softenClickThrough);
-      })();
-    </script>
   </body>
 </html>
