@@ -1,0 +1,26 @@
+title: PolyU Matrix
+description: MATRIX Research Team
+url: "https://billyzhiheng.github.io"
+
+# Keep the published site small so GitHub Pages deploy finishes reliably.
+# These paths stay in the repo but are omitted from the Pages artifact.
+exclude:
+  - scripts
+  - reference
+  - README.md
+  - .gitignore
+  - "CV-Zhiheng Zhao .docx"
+  - "CV-Zhiheng Zhao .txt"
+  - CV-B2-extract.txt
+  - visitor-map-embed.html
+  - legacy-itf-prp_038_24li-assets/images/people
+  - legacy-itf-prp_038_24li-assets/cycle_images/project1.png
+  - legacy-itf-prp_038_24li-assets/cycle_images/project2.png
+  - legacy-itf-prp_038_24li-assets/images/Yunli/event1.png
+  - legacy-itf-prp_038_24li-assets/images/Yunli/experiments.png
+  - legacy-itf-prp_038_24li-assets/images/Yunli/visit.png
+  - legacy-itf-prp_038_24li-assets/images/Yunli/Trails.png
+  - legacy-itf-prp_038_24li-assets/images/Yunli/publications.png
+  - "legacy-itf-prp_038_24li-assets/css/dark copy.css"
+  - "legacy-itf-prp_038_24li-assets/css/light copy.css"
+  - "legacy-itf-prp_038_24li-assets/css/style - 副本.css"
