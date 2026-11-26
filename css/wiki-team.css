@@ -1301,6 +1301,28 @@ html.dark-mode .pi-leader__icon-link img.pi-leader__icon-img--bitmap {
   margin: 0;
 }
 
+.page-members .mw-body .alumni-list {
+  list-style: none;
+  margin: 0.35em 0 1.25em;
+  padding: 0;
+}
+
+.page-members .mw-body .alumni-list li {
+  list-style: none;
+  margin: 0;
+  padding: 0.55em 0;
+  border-bottom: 1px solid var(--wiki-border-light);
+}
+
+.alumni-list li:first-child {
+  padding-top: 0.2em;
+}
+
+.alumni-list .member-card__name {
+  margin-bottom: 0.15em;
+  line-height: 1.45;
+}
+
 @media (max-width: 900px) {
   .member-grid {
     grid-template-columns: repeat(2, 1fr);
